@@ -1,10 +1,16 @@
 #! /bin/bash
 # Set initial variables
+product_name="wire-guard"
 config="./config.yaml"
+log_file="../logs/execution.log"
 # Load helper functions
+source ../helpers/write_log.sh
+source ../helpers/generate_log_file_name.sh
 source ../helpers/check_and_install_yq.sh
 source ../helpers/check_supported_os.sh
 source ../helpers/os_router.sh
+# Generate the log file name
+log_file=$(generate_log_file_name "$product_name")
 # Check and install yq if necessary
 check_and_install_yq
 if check_os_support "$config"; then
@@ -12,7 +18,17 @@ if check_os_support "$config"; then
     # Define the prefix you want to use, e.g., "install", "setup", etc.
     prefix="install"
     # Call the route_and_execute function with the prefix, OS family, and version
-    os_router "$prefix" "$os_family" "$os_version"
+    # os_router "$prefix" "$os_family" "$os_version"
+    # Call the os_routere function with the prefix, OS family, version, and log file
+    if os_router "$prefix" "$os_family" "$os_version" "$log_file"; then
+        write_log "success" "$prefix script for $os_family $os_version executed successfully." "$log_file"
+    else
+        write_log "error" "$prefix script for $os_family $os_version failed to execute." "$log_file"
+    fi
+else
+    write_log "error" "OS Family: $os_family, OS Version: $os_version are not supported." "$log_file"
+fi
+
 else
     echo "OS Family: $os_family, OS Version: $os_version are not supported."
 fi
