@@ -11,3 +11,6 @@ supported_os:
     versions:
       - 35
       - 36
+server:
+  - internal_ip: 192.168.0.1
+  - external_ip: 8.8.8.8
