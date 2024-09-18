@@ -14,7 +14,7 @@ log_file=$(generate_log_file_name "$product_name")
 # Check and install yq if necessary
 check_and_install_yq
 if check_os_support "$config"; then
-    echo "OS Family: $os_family, OS Version: $os_version are supported."
+    write_log "success"  "OS Family: $os_family, OS Version: $os_version are supported." "$log_file"
     # Define the prefix you want to use, e.g., "install", "setup", etc.
     prefix="install"
     # Call the route_and_execute function with the prefix, OS family, and version
@@ -30,7 +30,7 @@ else
 fi
 
 else
-    echo "OS Family: $os_family, OS Version: $os_version are not supported."
+    write_log "error" "OS Family: $os_family, OS Version: $os_version are not supported." "$log_file"
 fi
 
 # wg genkey | sudo tee /etc/wireguard/server_private.key | wg pubkey | sudo tee /etc/wireguard/server_public.key

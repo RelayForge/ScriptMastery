@@ -26,15 +26,15 @@ os_router() {
 
     # Check if the script exists
     if [ -f "$script_name" ]; then
-        echo -e "[${white}${script_name}${reset}] ${green}Executing $script_name...${reset}"
+        write_log "info" "[${white}${script_name}${reset}] ${green}Executing $script_name...${reset}" "$log_file"
         
         # Make the script executable and run it, while prefixing the output
         chmod +x "$script_name"
         ./"$script_name" | while IFS= read -r line; do
-            echo -e "[${white}${script_name}${reset}] ${green}$line${reset}"
+            write_log "info" "[${white}${script_name}${reset}] ${green}$line${reset}" "$log_file"
         done
     else
-        echo -e "[${white}${script_name}${reset}] ${red}Error: Script $script_name not found!${reset}"
+        write_log "error" "[${white}${script_name}${reset}] ${red}Error: Script $script_name not found!${reset}" "$log_file"
         return 1
     fi
 }

@@ -7,7 +7,7 @@ generate_log_file_name() {
     local product_name=$1
 
     # Get the current date and time in the format DDMMYYHHMMSS
-    local datetime=$(date '+%d%m%y%H%M%S')
+    local datetime=$(date '+%y%m%d%H%M%S')
 
     # Construct the log file name
     local log_file="../logs/${product_name}-${datetime}.log"
