@@ -25,7 +25,7 @@ os_router() {
     # script_path="wire-guard/$script_name"
 
     # Check if the script exists
-    if [ -f "$script_path" ]; then
+    if [ -f "$script_name" ]; then
         echo -e "[${white}${script_name}${reset}] ${green}Executing $script_name...${reset}"
         
         # Make the script executable and run it, while prefixing the output
