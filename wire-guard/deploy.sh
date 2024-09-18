@@ -29,9 +29,6 @@ else
     write_log "error" "OS Family: $os_family, OS Version: $os_version are not supported." "$log_file"
 fi
 
-else
-    write_log "error" "OS Family: $os_family, OS Version: $os_version are not supported." "$log_file"
-fi
 
 # wg genkey | sudo tee /etc/wireguard/server_private.key | wg pubkey | sudo tee /etc/wireguard/server_public.key
 # wg genkey | sudo tee /etc/wireguard/client_ops_private.key | wg pubkey | sudo tee /etc/wireguard/client_ops_public.key
