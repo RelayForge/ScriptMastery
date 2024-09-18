@@ -2,7 +2,7 @@ supported_os:
   - family: Ubuntu
     versions:
       - 22.04
-      - 23.04
+      - 24.04
   - family: Debian
     versions:
       - 10
