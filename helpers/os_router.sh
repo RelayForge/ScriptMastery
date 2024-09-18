@@ -22,15 +22,15 @@ os_router() {
 
     # Construct the script name based on the prefix, OS family, and version
     script_name="${prefix}_${os_family_lower}_${os_version_nodot}.sh"
-    script_path="wire-guard/$script_name"
+    # script_path="wire-guard/$script_name"
 
     # Check if the script exists
     if [ -f "$script_path" ]; then
         echo -e "[${white}${script_name}${reset}] ${green}Executing $script_name...${reset}"
         
         # Make the script executable and run it, while prefixing the output
-        chmod +x "$script_path"
-        ./"$script_path" | while IFS= read -r line; do
+        chmod +x "$script_name"
+        ./"$script_name" | while IFS= read -r line; do
             echo -e "[${white}${script_name}${reset}] ${green}$line${reset}"
         done
     else
