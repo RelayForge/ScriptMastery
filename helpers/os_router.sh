@@ -19,12 +19,15 @@ os_router() {
 
     # Check if the script exists
     if [ -f "$script_name" ]; then
-        echo "Executing $script_name..."
-        # Make the script executable and run it
-        chmod +x "$script_name"
-        ./"$script_name"
+        echo "[${script_name}] Executing $script_name..."
+        
+        # Make the script executable and run it, while prefixing the output
+        chmod +x "$script_path"
+        ./"$script_path" | while IFS= read -r line; do
+            echo "[${script_name}] $line"
+        done
     else
-        echo "Error: Script $script_name not found!"
+        echo "[${script_name}] Error: Script $script_name not found!"
         return 1
     fi
 }
