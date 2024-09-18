@@ -22,8 +22,8 @@ os_router() {
         echo "[${script_name}] Executing $script_name..."
         
         # Make the script executable and run it, while prefixing the output
-        chmod +x "$script_path"
-        ./"$script_path" | while IFS= read -r line; do
+        chmod +x "$script_name"
+        ./"$script_name" | while IFS= read -r line; do
             echo "[${script_name}] $line"
         done
     else
