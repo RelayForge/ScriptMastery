@@ -1,0 +1,13 @@
+supported_os:
+  - family: Ubuntu
+    versions:
+      - 22.04
+      - 24.04
+server:
+  - internal_ip: 192.168.0.1/24
+  - external_ip: 8.8.8.8
+  - allowed_subnets: 192.168.1.0/24, 192.168.0.0/24
+  - client_subnet_start: 192.168.1.100
+  - client_subnet_end: 192.168.1.200
+  - client_count: 5
+  - wg_port: 51820

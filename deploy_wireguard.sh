@@ -1,36 +1,24 @@
 #! /bin/bash
 # Set initial variables
-product_name="wire-guard"
-config="./config.yaml"
-log_file="../logs/execution.log"
+package="wireguard"
+config="./$package/config.yaml"
 # Load helper functions
-source ../helpers/write_log.sh
-source ../helpers/generate_log_file_name.sh
-source ../helpers/check_and_install_yq.sh
-source ../helpers/check_supported_os.sh
-source ../helpers/os_router.sh
-# Generate the log file name
-log_file=$(generate_log_file_name "$product_name")
-# Check and install yq if necessary
-check_and_install_yq
+source ./helpers/write_log.sh
+source ./helpers/check_reuirements.sh
+source ./helpers/check_os.sh
+source ./helpers/execution_router.sh
+# Check and install reuirements
+check_reuirements
+# Router to execute main logic scripts
 if check_os_support "$config"; then
-    write_log "success"  "OS Family: $os_family, OS Version: $os_version are supported." "$log_file"
-    # Define the prefix you want to use, e.g., "install", "setup", etc.
-    # Call the route_and_execute function with the prefix, OS family, and version
-    # os_router "$prefix" "$os_family" "$os_version"
-    # Call the os_routere function with the prefix, OS family, version, and log file
-    if os_router "install" "$os_family" "$os_version" "$log_file"; then
-        write_log "success" "install script for $os_family $os_version executed successfully." "$log_file"
-        if os_router "config" "$os_family" "$os_version" "$log_file"; then
-        write_log "success" "config script for $os_family $os_version executed successfully." "$log_file"
-        else
-        write_log "error" "config script for $os_family $os_version failed to execute." "$log_file"
-        fi
-    else
-        write_log "error" "install script for $os_family $os_version failed to execute." "$log_file"
-    fi
+    # Supported environment, continue
+    write_log "success"  "OS Family: $os_family, OS Version: $os_version are supported for $package deployment." "$package" "$log_file"
+    # Start install process
+    execution_router "$package" "install" "$os_family" "$os_version" "$log_file"
+    # Start configuration process
+    execution_router "$package" "config" "$os_family" "$os_version" "$log_file"
 else
-    write_log "error" "OS Family: $os_family, OS Version: $os_version are not supported." "$log_file"
+    write_log "error" "OS Family: $os_family, OS Version: $os_version are not supported for $package deployment." "$package" "$log_file"
 fi
 
 
