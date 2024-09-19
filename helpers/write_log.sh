@@ -22,7 +22,7 @@ if [ -z "$WRITE_LOG_LOADED" ]; then
         # Get the current date and time in the format YYMMDDHHMMSS
         local datetime=$(date '+%y%m%d%H%M%S')
         # Construct the log file name
-        local log_file="./logs/${product_name}-${datetime}.log"
+        local log_file="./logs/${package}-${datetime}.log"
         # Create the logs directory if it doesn't exist
         mkdir -p "./logs"
         # Choose color and label based on log level
