@@ -1,0 +1,6 @@
+# Exclude all content in any logs folder
+logs/
+*/logs/
+
+# Exclude all .log files globally
+*.log
