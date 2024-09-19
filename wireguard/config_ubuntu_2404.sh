@@ -40,8 +40,8 @@ for ((i=1; i<=client_count; i++)); do
     sudo chmod go= $wg_path/client_private_$i.key
     sudo chmod go= $wg_path/client_public_$i.key
     # Load client keys
-    client_private_key=$(cat $wg_path/client_private_$i.key)
-    client_public_key=$(cat $wg_path/client_public_$i.key)
+    client_private_key=$(sudo cat $wg_path/client_private_$i.key)
+    client_public_key=$(sudo cat $wg_path/client_public_$i.key)
     # Append client to server config
     sudo cat >> "/etc/wireguard/wg0.conf" << EOF
 
