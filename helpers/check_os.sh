@@ -1,10 +1,10 @@
 #!/bin/bash
 # Load write_log function
 source ./helpers/write_log.sh
-# Load check_reuirements function
-source ./helpers/check_reuirements.sh
+# Load check_requirements function
+source ./helpers/check_requirements.sh
 # Check reuirements
-check_reuirements
+check_requirements
 # Function to check if the OS is supported based on the given YAML path
 check_os_support() {
     local yaml_file=$1

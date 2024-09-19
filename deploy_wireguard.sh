@@ -4,11 +4,11 @@ package="wireguard"
 config="./$package/config.yaml"
 # Load helper functions
 source ./helpers/write_log.sh
-source ./helpers/check_reuirements.sh
+source ./helpers/check_requirements.sh
 source ./helpers/check_os.sh
 source ./helpers/execution_router.sh
 # Check and install reuirements
-check_reuirements
+check_requirements
 # Router to execute main logic scripts
 if check_os_support "$config"; then
     # Supported environment, continue

@@ -5,7 +5,7 @@ source ./helpers/write_log.sh
 if [ -z "$CHECK_EXECUTION_LOADED" ]; then
     CHECK_EXECUTION_LOADED=1
     # Function to check if reuirements are available and install them if not
-    check_reuirements() {
+    check_requirements() {
         if ! command -v yq &> /dev/null; then
             write_log "warning" "yq is not installed. Installing yq..." "reuirements" "$log_file"
             sudo wget https://github.com/mikefarah/yq/releases/latest/download/yq_linux_amd64 -O /usr/bin/yq && \
