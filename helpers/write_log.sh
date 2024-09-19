@@ -20,7 +20,7 @@ if [ -z "$WRITE_LOG_LOADED" ]; then
         local red='\033[1;31m'
         local reset='\033[0m'
         # Get the current date and time in the format YYMMDDHHMMSS
-        local datetime=$(date '+%y%m%d%H%M%S')
+        local datetime=$(date '+%y%m%d')
         # Construct the log file name
         local log_file="./logs/${package}-${datetime}.log"
         # Create the logs directory if it doesn't exist
